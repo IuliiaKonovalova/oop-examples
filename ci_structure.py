@@ -1,21 +1,16 @@
-class Person:
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-
-    def get_email(self):
-        return self.email
-
-    def get_name(self):
-        return self.name
-
-
+""" Structure of the Code Institute """
 class Specialization:
+    """ A class to represent a specialization """
     def __init__(self, name):
         self.name = name
 
 
 class Course:
+    """
+    A class to represent a course
+    it holds name, max_students, students, and specialization
+    If specialization is not specified, it defaults to "Not Specified"
+    """
     def __init__(
         self,
         name,
@@ -52,18 +47,30 @@ class Cohort:
 
 
 
+class Person:
+    """A class to represent a person"""
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
 
+    def get_email(self):
+        return self.email
+
+    def get_name(self):
+        return self.name
 
 class Student(Person):
-    def __init__(self, name, email, age, grade):
+    def __init__(self, name, email, age):
         super().__init__(name, email)
         self.age = age
-        self.grade = grade
+        self.grade = 0
         self.projects = []
 
     def get_grade(self):
         return self.grade
 
+    def update_total_score(self):
+        self.grade = sum(project.grade for project in self.projects)
 
 class Project:
     def __init__ (
@@ -83,11 +90,25 @@ class Project:
         self.creator = creator
 
 
-# Creating a Student object
-student = Student("John Doe", "john@example.com", 20, 95)
+# Creating Student's objects:
+def creating_students():
+    student_1 = Student("John Doe", "john@example.com", 19)
+    print('Student 1: ', student_1.name, student_1.email, student_1.age)
 
-# Creating a Project object with the student as the creator
-project = Project("My Project", 1, "https://github.com/myproject", 90, "https://myproject.com", student)
+    student_2 = Student("Rachel Smith", "rachel@gmail.com", 20)
+    print('Student 2: ', student_2.name, student_2.email, student_2.age)
 
-print(project.creator.name)
-print(project.project_number)
+
+# # Create a project for the student 1
+# project_1 = Project("JD-1-project", 1, "https://github.com/JD-1-project", 90, "https://JD-1-project.com", student_1)
+# print('Project 1: ', project_1.name, project_1.project_number, project_1.github_link, project_1.deployed_link, project_1.grade, project_1.creator.name)
+# print('Student 1 Projects: ', student_1.projects)
+# student_1.projects.append(project_1)
+# print('Student 1 Projects after appending: ', student_1.projects)
+# print('Student 1 Projects after appending: ', student_1.projects[0].name)
+
+# # Update the project's grade
+# print('Student 1 Grade before updating: ', student_1.grade)
+# student_1.update_total_score()
+# print('Student 1 Grade after updating: ', student_1.grade)
+
