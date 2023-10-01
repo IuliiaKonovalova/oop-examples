@@ -45,8 +45,6 @@ class Cohort:
         return value / len(self.students)
 
 
-
-
 class Person:
     """A class to represent a person"""
     def __init__(self, name, email):
@@ -58,6 +56,7 @@ class Person:
 
     def get_name(self):
         return self.name
+
 
 class Student(Person):
     def __init__(self, name, email, age):
@@ -71,6 +70,7 @@ class Student(Person):
 
     def update_total_score(self):
         self.grade = sum(project.grade for project in self.projects)
+
 
 class Project:
     def __init__ (
@@ -107,8 +107,22 @@ def creating_students_with_projects():
     student_2 = Student("Rachel Smith", "rachel@gmail.com", 20)
     print('Student 2: ', student_2.name, student_2.email, student_2.age)
 
-    project_1 = Project("JD-1-project", 1, "https://github.com/JD-1-project", 90, "https://JD-1-project.com", student_1)
-    print('Project 1: ', project_1.name, project_1.project_number, project_1.github_link, project_1.deployed_link, project_1.grade, project_1.creator.name)
+    project_1 = Project(
+        "JD-1-project",1,
+        "https://github.com/JD-1-project",
+        90,
+        "https://JD-1-project.com",
+        student_1
+    )
+    print(
+        'Project 1: ',
+        project_1.name,
+        project_1.project_number,
+        project_1.github_link,
+        project_1.deployed_link,
+        project_1.grade,
+        project_1.creator.name
+    )
     print('Student 1 Projects: ', student_1.projects)
 
     student_1.projects.append(project_1)
@@ -125,8 +139,22 @@ def creating_students_with_projects_and_grades():
     student_2 = Student("Rachel Smith", "rachel@gmail.com", 20)
     print('Student 2: ', student_2.name, student_2.email, student_2.age)
 
-    project_1 = Project("JD-1-project", 1, "https://github.com/JD-1-project", 90, "https://JD-1-project.com", student_1)
-    print('Project 1: ', project_1.name, project_1.project_number, project_1.github_link, project_1.deployed_link, project_1.grade, project_1.creator.name)
+    project_1 = Project(
+        "JD-1-project",1,
+        "https://github.com/JD-1-project",
+        90,
+        "https://JD-1-project.com",
+        student_1
+    )
+    print(
+        'Project 1: ',
+        project_1.name,
+        project_1.project_number,
+        project_1.github_link,
+        project_1.deployed_link,
+        project_1.grade,
+        project_1.creator.name
+    )
     print('Student 1 Projects: ', student_1.projects)
 
     student_1.projects.append(project_1)
@@ -137,6 +165,7 @@ def creating_students_with_projects_and_grades():
     print('Student 1 Grade before updating: ', student_1.grade)
     student_1.update_total_score()
     print('Student 1 Grade after updating: ', student_1.grade)
+
 
 def main():
     print(
@@ -162,6 +191,7 @@ def main():
         {'-'*50}
         """
     )
+
 
 if __name__ == "__main__":
     main()
