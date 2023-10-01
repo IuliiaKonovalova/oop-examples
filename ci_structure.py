@@ -58,6 +58,31 @@ class Person:
         return self.name
 
 
+class Mentor(Person):
+    def __init__(self, name, email):
+        super().__init__(name, email)
+        self.specializations = []
+        self.students = []
+
+    def add_specialization(self, spec):
+        self.specializations.append(spec)
+
+    def show_mentor_specializations(self):
+        specs_names = []
+        for spec in self.specializations:
+            specs_names.append(spec.name)
+        print('All Specs: ', specs_names)
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def show_mentor_students(self):
+        students_names = []
+        for student in self.students:
+            students_names.append(student.name)
+        print('All students: ', students_names)
+
+
 class Student(Person):
     def __init__(self, name, email, age):
         super().__init__(name, email)
@@ -167,6 +192,47 @@ def creating_students_with_projects_and_grades():
     print('Student 1 Grade after updating: ', student_1.grade)
 
 
+def create_mentors():
+    """ Create mentors objects out of Mentor class """
+    mentor_1 = Mentor('Julia Konn', 'julia@gmail.com')
+    mentor_2 = Mentor('Alex Konn', 'alex@gmail.com')
+    print('Mentor 1: ', mentor_1.name, mentor_1.email)
+    print('Mentor 2: ', mentor_2.name, mentor_2.email)
+
+    # create specializations
+    spec_1 = Specialization("Advanced Front End")
+    spec_2 = Specialization("E-commerce")
+    spec_3 = Specialization("Predictive Analytics")
+    print('Spec 1: ', spec_1.name)
+    print('Spec 1: ', spec_2.name)
+    print('Spec 1: ', spec_3.name)
+
+    # Add specs to the mentors:
+    mentor_1.add_specialization(spec_1)
+    mentor_1.add_specialization(spec_2)
+    mentor_2.add_specialization(spec_1)
+    mentor_2.add_specialization(spec_2)
+    mentor_2.add_specialization(spec_3)
+    print(mentor_1.name)
+    mentor_1.show_mentor_specializations()
+    print(mentor_2.name)
+    mentor_2.show_mentor_specializations()
+
+    # add student to the mentor
+    student_1 = Student("John Doe", "john@example.com", 19)
+    print('Student 1: ', student_1.name, student_1.email, student_1.age)
+    student_2 = Student("Rachel Smith", "rachel@gmail.com", 20)
+    print('Student 2: ', student_2.name, student_2.email, student_2.age)
+
+    mentor_1.add_student(student_1)
+    print(mentor_1.students[0].name)
+    mentor_1.show_mentor_students()
+    mentor_1.add_student(student_2)
+    print(mentor_1.students[1].name)
+    mentor_1.show_mentor_students()
+
+
+
 def main():
     print(
         f"""
@@ -186,6 +252,12 @@ def main():
         """
     )
     creating_students_with_projects_and_grades()
+    print(
+        f"""
+        {'-'*50}
+        """
+    )
+    create_mentors()
     print(
         f"""
         {'-'*50}
