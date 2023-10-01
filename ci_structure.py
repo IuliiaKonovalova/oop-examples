@@ -90,8 +90,8 @@ class Project:
         self.creator = creator
 
 
-# Creating Student's objects:
 def creating_students():
+    """ Creating students """
     student_1 = Student("John Doe", "john@example.com", 19)
     print('Student 1: ', student_1.name, student_1.email, student_1.age)
 
@@ -99,16 +99,69 @@ def creating_students():
     print('Student 2: ', student_2.name, student_2.email, student_2.age)
 
 
-# # Create a project for the student 1
-# project_1 = Project("JD-1-project", 1, "https://github.com/JD-1-project", 90, "https://JD-1-project.com", student_1)
-# print('Project 1: ', project_1.name, project_1.project_number, project_1.github_link, project_1.deployed_link, project_1.grade, project_1.creator.name)
-# print('Student 1 Projects: ', student_1.projects)
-# student_1.projects.append(project_1)
-# print('Student 1 Projects after appending: ', student_1.projects)
-# print('Student 1 Projects after appending: ', student_1.projects[0].name)
+def creating_students_with_projects():
+    """ Creating students with projects """
+    student_1 = Student("John Doe", "john@example.com", 19)
+    print('Student 1: ', student_1.name, student_1.email, student_1.age)
 
-# # Update the project's grade
-# print('Student 1 Grade before updating: ', student_1.grade)
-# student_1.update_total_score()
-# print('Student 1 Grade after updating: ', student_1.grade)
+    student_2 = Student("Rachel Smith", "rachel@gmail.com", 20)
+    print('Student 2: ', student_2.name, student_2.email, student_2.age)
 
+    project_1 = Project("JD-1-project", 1, "https://github.com/JD-1-project", 90, "https://JD-1-project.com", student_1)
+    print('Project 1: ', project_1.name, project_1.project_number, project_1.github_link, project_1.deployed_link, project_1.grade, project_1.creator.name)
+    print('Student 1 Projects: ', student_1.projects)
+
+    student_1.projects.append(project_1)
+
+    print('Student 1 Projects after appending: ', student_1.projects)
+    print('Student 1 Projects after appending: ', student_1.projects[0].name)
+
+
+def creating_students_with_projects_and_grades():
+    """ Creating students with projects and grades """
+    student_1 = Student("John Doe", "john@example.com", 19)
+    print('Student 1: ', student_1.name, student_1.email, student_1.age)
+
+    student_2 = Student("Rachel Smith", "rachel@gmail.com", 20)
+    print('Student 2: ', student_2.name, student_2.email, student_2.age)
+
+    project_1 = Project("JD-1-project", 1, "https://github.com/JD-1-project", 90, "https://JD-1-project.com", student_1)
+    print('Project 1: ', project_1.name, project_1.project_number, project_1.github_link, project_1.deployed_link, project_1.grade, project_1.creator.name)
+    print('Student 1 Projects: ', student_1.projects)
+
+    student_1.projects.append(project_1)
+
+    print('Student 1 Projects after appending: ', student_1.projects)
+    print('Student 1 Projects after appending: ', student_1.projects[0].name)
+
+    print('Student 1 Grade before updating: ', student_1.grade)
+    student_1.update_total_score()
+    print('Student 1 Grade after updating: ', student_1.grade)
+
+def main():
+    print(
+        f"""
+        {'-'*50}
+        """
+    )
+    creating_students()
+    print(
+        f"""
+        {'-'*50}
+        """
+    )
+    creating_students_with_projects()
+    print(
+        f"""
+        {'-'*50}
+        """
+    )
+    creating_students_with_projects_and_grades()
+    print(
+        f"""
+        {'-'*50}
+        """
+    )
+
+if __name__ == "__main__":
+    main()
