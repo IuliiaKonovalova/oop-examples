@@ -135,7 +135,6 @@ Closest deadline is {closest_date}. It's {
             )
 
 
-
 class Project:
     def __init__ (
         self,
@@ -263,7 +262,7 @@ def creating_students_with_projects_and_grades():
 
     project_3 = Project(
         "JD-3-project",
-        2,
+        3,
         "https://github.com/JD-3-project",
         "2023-10-23",
         90,
