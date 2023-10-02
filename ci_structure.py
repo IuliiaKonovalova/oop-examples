@@ -134,6 +134,15 @@ Closest deadline is {closest_date}. It's {
                 """
             )
 
+    def find_deadline_for_project(self, num):
+        if len(self.projects) <= 0:
+            print('Deadlines: not set yet')
+        else:
+            print(
+                f"""
+Project {num}'s deadline is {self.projects[num - 1].deadline}
+                """
+            )
 
 class Project:
     def __init__ (
@@ -290,6 +299,9 @@ def creating_students_with_projects_and_grades():
     student_2.check_deadline()
     student_1.check_closest_deadline()
     student_2.check_closest_deadline()
+    student_1.find_deadline_for_project(1)
+    student_1.find_deadline_for_project(2)
+    student_1.find_deadline_for_project(3)
 
 
 def create_mentors():
