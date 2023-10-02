@@ -1,3 +1,5 @@
+from datetime import date
+
 """ Structure of the Code Institute """
 class Specialization:
     """ A class to represent a specialization """
@@ -96,6 +98,17 @@ class Student(Person):
     def update_total_score(self):
         self.grade = sum(project.grade for project in self.projects)
 
+    def check_deadline(self):
+        deadlines = []
+        counter = 1
+        if len(self.projects) <= 0:
+            print('Deadlines: not set yet')
+        else:
+            for project in self.projects:
+                deadlines.append(f"Project {counter}: {project.deadline}")
+                counter + 1
+            print('Deadlines: ', deadlines)
+
 
 class Project:
     def __init__ (
@@ -103,14 +116,16 @@ class Project:
         name,
         project_number,
         github_link,
+        deadline,
         grade=0,
         deployed_link="Not Deployed",
-        creator=None
+        creator=None,
     ):
         self.name = name
         self.project_number = project_number
         self.github_link = github_link
         self.deployed_link = deployed_link
+        self.deadline = deadline
         self.grade = grade
         self.creator = creator
 
@@ -135,6 +150,7 @@ def creating_students_with_projects():
     project_1 = Project(
         "JD-1-project",1,
         "https://github.com/JD-1-project",
+        '23-05-23',
         90,
         "https://JD-1-project.com",
         student_1
@@ -167,6 +183,7 @@ def creating_students_with_projects_and_grades():
     project_1 = Project(
         "JD-1-project",1,
         "https://github.com/JD-1-project",
+        '23-05-23',
         90,
         "https://JD-1-project.com",
         student_1
@@ -190,6 +207,9 @@ def creating_students_with_projects_and_grades():
     print('Student 1 Grade before updating: ', student_1.grade)
     student_1.update_total_score()
     print('Student 1 Grade after updating: ', student_1.grade)
+
+    student_1.check_deadline()
+    student_2.check_deadline()
 
 
 def create_mentors():
