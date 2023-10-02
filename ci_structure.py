@@ -109,6 +109,32 @@ class Student(Person):
                 counter + 1
             print('Deadlines: ', deadlines)
 
+    def check_closest_deadline(self):
+        deadlines = []
+        counter = 1
+        if len(self.projects) <= 0:
+            print('Deadlines: not set yet')
+        else:
+            for project in self.projects:
+                deadlines.append(project.deadline)
+                counter + 1
+            deadlines_objects = [
+                date.fromisoformat(date_str) for date_str in deadlines
+            ]
+            today = date.today()
+            date_differences = [abs(today - d) for d in deadlines_objects]
+            closest_date_index = date_differences.index(min(date_differences))
+
+            closest_date = deadlines[closest_date_index]
+            print(
+                f"""
+Closest deadline is {closest_date}. It's {
+    self.projects[closest_date_index].project_number
+} project
+                """
+            )
+
+
 
 class Project:
     def __init__ (
@@ -150,7 +176,7 @@ def creating_students_with_projects():
     project_1 = Project(
         "JD-1-project",1,
         "https://github.com/JD-1-project",
-        '23-05-23',
+        "2023-05-23",
         90,
         "https://JD-1-project.com",
         student_1
@@ -172,6 +198,7 @@ def creating_students_with_projects():
     print('Student 1 Projects after appending: ', student_1.projects[0].name)
 
 
+
 def creating_students_with_projects_and_grades():
     """ Creating students with projects and grades """
     student_1 = Student("John Doe", "john@example.com", 19)
@@ -181,9 +208,10 @@ def creating_students_with_projects_and_grades():
     print('Student 2: ', student_2.name, student_2.email, student_2.age)
 
     project_1 = Project(
-        "JD-1-project",1,
+        "JD-1-project",
+        1,
         "https://github.com/JD-1-project",
-        '23-05-23',
+        "2023-05-23",
         90,
         "https://JD-1-project.com",
         student_1
@@ -208,8 +236,61 @@ def creating_students_with_projects_and_grades():
     student_1.update_total_score()
     print('Student 1 Grade after updating: ', student_1.grade)
 
+    project_2 = Project(
+        "JD-2-project",
+        2,
+        "https://github.com/JD-2-project",
+        "2023-07-23",
+        90,
+        "https://JD-2-project.com",
+        student_1
+    )
+    print(
+        'Project 2: ',
+        project_2.name,
+        project_2.project_number,
+        project_2.github_link,
+        project_2.deployed_link,
+        project_2.grade,
+        project_2.creator.name
+    )
+    print('Student 1 Projects: ', student_1.projects)
+
+    student_1.projects.append(project_2)
+
+    print('Student 1 Projects after appending: ', student_1.projects)
+    print('Student 1 Projects after appending: ', student_1.projects[1].name)
+
+    project_3 = Project(
+        "JD-3-project",
+        2,
+        "https://github.com/JD-3-project",
+        "2023-10-23",
+        90,
+        "https://JD-3-project.com",
+        student_1
+    )
+    print(
+        'Project 3: ',
+        project_3.name,
+        project_3.project_number,
+        project_3.github_link,
+        project_3.deployed_link,
+        project_3.grade,
+        project_3.creator.name
+    )
+    print('Student 1 Projects: ', student_1.projects)
+
+    student_1.projects.append(project_3)
+
+    print('Student 1 Projects after appending: ', student_1.projects)
+    print('Student 1 Projects after appending: ', student_1.projects[1].name)
+
+
     student_1.check_deadline()
     student_2.check_deadline()
+    student_1.check_closest_deadline()
+    student_2.check_closest_deadline()
 
 
 def create_mentors():
@@ -277,7 +358,7 @@ def main():
         {'-'*50}
         """
     )
-    create_mentors()
+    # create_mentors()
     print(
         f"""
         {'-'*50}
