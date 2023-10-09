@@ -369,7 +369,7 @@ def main():
         {'-'*50}
         """
     )
-    # create_mentors()
+    create_mentors()
     print(
         f"""
         {'-'*50}
