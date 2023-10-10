@@ -32,6 +32,10 @@ class Course:
 
 
 class Cohort:
+    """
+    Class to represent a cohort,
+    it holds name, max_students, students, and specialization
+    """
     def __init__(self, name, max_students):
         self.name = name
         self.max_students = max_students
@@ -61,6 +65,10 @@ class Person:
 
 
 class Mentor(Person):
+    """
+    Class to represent a mentor,
+    it holds name, email, specializations, and students
+    """
     def __init__(self, name, email):
         super().__init__(name, email)
         self.specializations = []
@@ -86,6 +94,10 @@ class Mentor(Person):
 
 
 class Student(Person):
+    """
+    Class to represent a student,
+    it holds name, email, age, grade, and projects
+    """
     def __init__(self, name, email, age):
         super().__init__(name, email)
         self.age = age
@@ -145,6 +157,11 @@ Project {num}'s deadline is {self.projects[num - 1].deadline}
             )
 
 class Project:
+    """
+    Class to represent a project,
+    it holds name, project_number, github_link, deadline,
+    grade, deployed_link, and creator
+    """
     def __init__ (
         self,
         name,
